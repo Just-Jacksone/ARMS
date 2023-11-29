@@ -4,15 +4,13 @@
 
 **Primary Contact:** _**Jackson Vaughn (**_**[jvaughn@ucdavis.edu](mailto:jvaughn@ucdavis.edu))**
 
-**Omri Steinberg-Tatman / Hans O'Flaherty / Luke Patrick Jones**
+_**Omri Steinberg-Tatman / Hans O'Flaherty / Luke Patrick Jones**_
 
 **ost@ucdavis.edu / hoflaherty@ucdavis.edu / lpjones@ucdavis.edu**
 
 **Drive:** (https://drive.google.com/drive/folders/1E_UN6-1uaa7Qjk5qJclIeFs3kOI9vono?usp=drive_link)
 
-**GitHub:**
-
-[https://github.com/Just-Jacksone/the-lizardzs.git](https://github.com/Just-Jacksone/the-lizardzs.git)
+**GitHub:** [https://github.com/Just-Jacksone/the-lizardzs.git](https://github.com/Just-Jacksone/the-lizardzs.git)
 
 ## 1 INTRODUCTION
 
