@@ -1,3 +1,4 @@
+import cv2
 
 LEFT_SHOULDER = 5
 RIGHT_SHOULDER = 6
@@ -5,12 +6,18 @@ LEFT_ELBOW = 7
 RIGHT_ELBOW = 8
 LEFT_WRIST = 9
 RIGHT_WRIST = 10
+CHEST = 17
+
+NODE_INDICES = [LEFT_SHOULDER, RIGHT_SHOULDER, LEFT_ELBOW, RIGHT_ELBOW, LEFT_WRIST, RIGHT_WRIST, CHEST]
 
 NUM_MEASUREMENTS = 10
 HEIGHT = 480
 WIDTH = 640
 TPOSE_THRESHOLD = 25
 ANGLE_THRESHOLD = 35
+CENTER_WIDTH = 640
+CENTER_HEIGHT = 480
+
 
 class Arm:
     def __init__(self):
@@ -66,7 +73,7 @@ class Body:
     def __init__(self):
         self.right_arm = Arm()
         self.left_arm = Arm()
-        self.chest = [0,0]
+        self.chest = [WIDTH/2, HEIGHT/2]
 
     def t_pose(self):
         return self.left_arm.is_horizontal() and self.right_arm.is_horizontal()
@@ -92,46 +99,46 @@ def classify_pose(peaks, counts, objects, topology, body):
         #     continue
 
         coords = list()
+        chest_in_frame = False
         
-
         # Get the coordinates of each body parts in keys
         K = topology.shape[0]
         for i in range(counts[0]):
             obj = objects[0][i]
-            for j in range(LEFT_SHOULDER, RIGHT_WRIST + 1):
+            for j in NODE_INDICES:
                 k = int(obj[j])
                 if k >= 0:
+                    if j == CHEST:
+                        chest_in_frame = True
                     peak = peaks[0][j][k]
                     x, y = int(peak[1] * WIDTH), int(peak[0] * HEIGHT)
                     coords.append([x,y])
 
-        if len(coords) != RIGHT_WRIST - LEFT_SHOULDER + 1:
-            continue
+        if len(coords) != len(NODE_INDICES):
+            return "No Pose", chest_in_frame
 
+        
         body.left_arm.shoulder = coords[0]
         body.right_arm.shoulder = coords[1]
         body.left_arm.elbow = coords[2]
         body.right_arm.elbow = coords[3]
         body.left_arm.wrist = coords[4]
         body.right_arm.wrist = coords[5]
+        body.chest = coords[6]
         
 
         if body.t_pose():
             pose_classification = "T-Pose"
-            break
         elif body.m_pose():
             pose_classification = "M-Pose"
-            break
         elif body.w_pose():
             pose_classification = "W-Pose"
-            break
         elif body.s_pose():
             pose_classification = "S-Pose"
-            break
         else:
             pose_classification = "No Pose"
 
-    return pose_classification
+    return pose_classification, chest_in_frame
 
 
 def draw_keypoints_and_values(image, counts, objects, peaks, topology):

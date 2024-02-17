@@ -19,29 +19,26 @@ class Controls:
         print("Done initializing")
 
     
-    def forward(self, speed, duration=0):
+    def forward(self, speed):
         speed = MAX_THROTTLE if (speed + MIN_THROTTLE) > MAX_THROTTLE else (speed + MIN_THROTTLE)
-        print(f"Speeding up to {speed} for {duration}s\n")
+        print(f"Speeding up to {speed} \n")
         self.kit.continuous_servo[THROTTLE_CHANNEL].throttle = speed/100
-        time.sleep(duration)
 
-    def brake(self, duration=0):
-        print(f"Braking for {duration}s\n")
+    def brake(self):
+        print(f"Braking \n");
         self.kit.continuous_servo[THROTTLE_CHANNEL].throttle = 0
 
-    def turn_center(self, duration=0):
-        print(f"Centered for {duration}s\n")
+    def turn_center(self):
+        print(f"Centered \n")
         self.kit.servo[SERVO_CHANNEL].angle = 90
 
-    def turn_right(self, angle, duration=0):
-        print(f"Turned right {angle} degrees for {duration}s\n")
+    def turn(self, angle):
+        self.kit.servo[SERVO_CHANNEL].angle = angle
+
+    def turn_right(self, angle):
+        print(f"Turned right {angle} degrees \n")
         self.kit.servo[SERVO_CHANNEL].angle = 90 + angle
 
-    def turn_left(self, angle, duration=0):
-        print(f"Turned left {angle} degrees for {duration}s\n")
+    def turn_left(self, angle):
+        print(f"Turned left {angle} degrees \n")
         self.kit.servo[SERVO_CHANNEL].angle = 90 - angle
-
-
-
-
-

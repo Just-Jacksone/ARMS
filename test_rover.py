@@ -1,10 +1,14 @@
 from unittest import removeResult
 from rover.controls import Controls
+import time
 
 rover = Controls()
-rover.turn_right(angle = 90, duration=10)
+rover.turn_left(angle = 90)
+time.sleep(1)
+rover.turn_right(angle = 90)
+time.sleep(1)
 rover.turn_center()
-
-rover.forward(speed=1, duration=10)
-
+time.sleep(1)
+rover.forward(speed=1)
+time.sleep(1)
 rover.brake()

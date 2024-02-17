@@ -34,6 +34,7 @@ topology = trt_pose.coco.coco_category_to_topology(human_pose)
 model_trt = TRTModule()
 model_trt.load_state_dict(torch.load(OPTIMIZED_MODEL))
 
+# Doing stuff (tbd)
 parse_objects = ParseObjects(topology)
 draw_objects = DrawObjects(topology)
 
@@ -89,8 +90,8 @@ try:
                 rover.forward(speed)
         
         # Draw poses and display them
-        draw_objects(color_image, counts, objects, peaks)
-        # draw_keypoints_and_values(color_image, counts, objects, peaks, topology)
+        #draw_objects(color_image, counts, objects, peaks)
+        draw_keypoints_and_values(color_image, counts, objects, peaks, topology)
 
         # Calculate FPS and display it
         current_frame_time = time.time()
