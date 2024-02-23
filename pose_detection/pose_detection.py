@@ -14,7 +14,9 @@ NUM_MEASUREMENTS = 10
 HEIGHT = 480
 WIDTH = 640
 TPOSE_THRESHOLD = 25
-ANGLE_THRESHOLD = 35
+
+#TODO: Consider basing thresholds based on ratio of pixels to avoid incorrefct posse detection and reducing thresholds being incorrect for larger distancesds
+ANGLE_THRESHOLD = 50
 CENTER_WIDTH = 640
 CENTER_HEIGHT = 480
 
@@ -89,6 +91,7 @@ class Body:
 
 def classify_pose(peaks, counts, objects, topology, body):
     pose_classification = ""
+    chest_in_frame = False
 
     for i in range(counts[0]):
         pose = objects[0][i]
@@ -99,7 +102,6 @@ def classify_pose(peaks, counts, objects, topology, body):
         #     continue
 
         coords = list()
-        chest_in_frame = False
         
         # Get the coordinates of each body parts in keys
         K = topology.shape[0]
