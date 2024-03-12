@@ -5,7 +5,7 @@ import time
 from approxeng.input.selectbinder import ControllerResource
 
 MAX_THROTTLE = 60
-MIN_THROTTLE = 30
+MIN_THROTTLE = 35
 SERVO_CHANNEL = 0
 THROTTLE_CHANNEL = 1
 
