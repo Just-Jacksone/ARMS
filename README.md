@@ -20,6 +20,8 @@ Equipped with a powerful Nvidia Jetson TX2 module and an Intel RealSense camera,
 
 A.R.M.S. stands out for its ability to autonomously navigate complex environments while maintaining a constant follow distance from its user. Using the Intel RealSense camera for depth sensing and the Nvidia Jetson TX2 for processing, the rover dynamically adjusts its path to avoid obstacles and keep the user in sight, ensuring a smooth and safe experience.
 
+![Rover following user](images/User_Following.gif)
+
 ### Intuitive Pose-Based Control
 
 Beyond mere following, A.R.M.S. introduces a novel method of interaction through pose detection. By adopting specific stances, such as the T-Pose for activation or the S-Pose for pause, users can control the rover without the need for handheld devices. This feature not only adds to the convenience but also enriches the user experience by making technology more accessible and fun.
@@ -73,6 +75,12 @@ Install other miscellaneous packages
    pip3 install cv2
 ```
 
+### Install resnet18 weights
+```bash
+   wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1XYDdCUdiF2xxx4rznmLb62SdOUZuoNbd' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1XYDdCUdiF2xxx4rznmLb62SdOUZuoNbd" -O resnet18_baseline_att_224x224_A_epoch_249.pth 
+   mv resnet18_baseline_att_224x224_A_epoch_249.pth pose_detection/
+```
+
 ## Usage
 
 Interacting with A.R.M.S. is designed to be intuitive, relying on specific body poses to control the rover's actions. Below are the instructions on how to start the rover, control it, and stop it using pose commands:
@@ -86,6 +94,8 @@ To activate A.R.M.S. and begin the following mode:
 3. Ensure your arms are parallel to the ground - this is recognized as the T-Pose.
 4. The rover will process your pose and start to follow you once it recognizes the T-Pose.
 
+![TPose](images/TPose.gif)
+
 ### Controlling the Rover
 
 Once activated, A.R.M.S. will autonomously follow the user. Ensure you maintain a clear path for the rover to avoid any obstacles.
@@ -98,10 +108,9 @@ To stop the rover:
 2. Lower the other arm to form a right angle, with your hand pointing downwards.
 3. The rover will recognize the S-Pose and come to a stop.
 
+![SPose](images/SPose.jpg)
+
 Remember that A.R.M.S. has been designed with user safety as a priority. If you need to halt the rover immediately for any reason, transition to the S-Pose. Make sure to perform the poses clearly so the rover's camera system can detect them accurately for optimal responsiveness. However, A.R.M.S. does have an auto-braking feature to avoid any collisions with the user. 
-
-
-
 
 ## Acknowledgments
 
