@@ -1,70 +1,125 @@
-# AUTONOMOUS ROVER FOR MOBILE SUPPORT (A.R.M.S.)
-
-**Team Name: The Lizardz-s**
+# A.R.M.S. - Autonomous Rover for Mobile Support
 
 **Primary Contact:** _**Jackson Vaughn (**_**[jvaughn@ucdavis.edu](mailto:jvaughn@ucdavis.edu))**
 
-_**Omri Steinberg-Tatman / Hans O'Flaherty / Luke Patrick Jones**_
+_**Omri Steinberg-Tatman / Brooke O'Flaherty / Luke Patrick Jones**_
 
-**ost@ucdavis.edu / hoflaherty@ucdavis.edu / lpjones@ucdavis.edu**
+**[ost@ucdavis.edu](mailto:ost@ucdavis.edu) / [kelpiekrisps@gmail.com](mailto:kelpiekrisps@gmail.com) / [lpjones@ucdavis.edu](mailto:lpjones@ucdavis.edu)**
 
-**Drive:** https://drive.google.com/drive/folders/1E_UN6-1uaa7Qjk5qJclIeFs3kOI9vono?usp=drive_link
+## Overview
 
-**GitHub:** [https://github.com/Just-Jacksone/the-lizardzs.git](https://github.com/Just-Jacksone/the-lizardzs.git)
+A.R.M.S. (Autonomous Rover for Mobile Support) represents a groundbreaking step forward in personal mobility assistance, developed by a team of engineering students at the University of California, Davis. In an era where students and professionals alike are burdened by the weight of their daily necessities, A.R.M.S. offers a smart, efficient, and hands-free solution to alleviate this strain. At its core, the project transforms a Traxxas R.C. car into a semi-autonomous rover, capable of following its owner with precision, thanks to advanced robotics, machine learning, and real-time data processing technologies.
 
-## 1 INTRODUCTION
+Equipped with a powerful Nvidia Jetson TX2 module and an Intel RealSense camera, A.R.M.S. leverages Nvidia’s trt_pose model for state-of-the-art real-time pose estimation. This enables the rover to interpret a range of user poses, turning simple gestures into commands that guide its movement. The result is a seamless interaction between human and machine, offering a glimpse into the future of personal robotic assistants.
 
-In the United States, more than 79 million students carry backpacks. It has become almost a necessity for students to carry around all the items they use day to day. However, as students start to carry more and more heavy electronics, there starts to be a physical toll. It is recommended that a loaded backpack should never weigh more than 15% of the carrier's total body weight. Despite this recommendation, nearly 55% of students carry a backpack that exceeds their maximum carrying capacity. Due to these extremely heavy "packs," there were nearly 23,000 backpack-related injuries in 2007. [2]
+![A.R.M.S. Rover in Action](images/ARMS_Cover.jpg)
 
-Unfortunately, it is not possible for students to simply carry fewer items. What students really need are some helping hands, or more aptly, some helping A.R.M.S. A.R.M.S., or Autonomous Rover for Mobile Support, is our solution to the problem weighing on everyone's shoulders: backpacks. Utilizing a small robotic car retrofitted for cargo and a MOTS visualization system, we propose an autonomous rover that follows the user around from class to class, carrying their most essential items. Additionally, we will allow the user to interface with the robot using unique poses to adjust its speed. This project will not only make people's lives more convenient, but it could substantially lower backpack-related injuries.
+## Features
 
-## 2 SURVEY OF COMPETITION
+### Autonomous User Following
 
-Piaggio Fast Forward, the creator of the Vespa, is introducing a product called "The Gita". The Gita is described as a robot that "moves intelligently with you"[1]. It is also a robot that carries luggage around and tracks the user. It utilizes "first-of-its-kind following technology, along with an array of cameras and sensors, provide a wide field of vision that allows gita to stay in lock-step with its leader". However, what sets us apart is the unique ability for the user to interface with the robot using hand signals to control its speed.
+A.R.M.S. stands out for its ability to autonomously navigate complex environments while maintaining a constant follow distance from its user. Using the Intel RealSense camera for depth sensing and the Nvidia Jetson TX2 for processing, the rover dynamically adjusts its path to avoid obstacles and keep the user in sight, ensuring a smooth and safe experience.
 
-## 3 APPROACH AND METHODOLOGY
+### Intuitive Pose-Based Control
 
-We will use MOTS to track the person and follow them. Additionally, we will have the demo user wear a orange vest to help the tracker. To actually create the "rover", we will use a retrofitted rc car. To allow the user to interface with the rover, we will use a form of pose detection. The following chart depicts how the poses would affect the rover.
+Beyond mere following, A.R.M.S. introduces a novel method of interaction through pose detection. By adopting specific stances, such as the T-Pose for activation or the S-Pose for pause, users can control the rover without the need for handheld devices. This feature not only adds to the convenience but also enriches the user experience by making technology more accessible and fun.
 
-![Shape1](RackMultipart20231129-1-jlk1hg_html_1ec8d274f33571f5.gif)
+### Real-Time Responsiveness
 
-_Datasets:_
+At the heart of A.R.M.S.’s performance lies its capability to operate at near-real-time frame rates. Achieving around 20 frames per second, the system provides immediate feedback to user commands and environmental changes. This responsiveness is crucial for maintaining an organic and reliable interaction between the rover and its user, ensuring that A.R.M.S. can adapt on-the-fly to varying conditions.
 
-- Pretrained YOLO set for person detection, optimize detection with orange shirt images
-- Dataset for pose detection [ASK ABOUT THIS]
+### Advanced Safety Features
 
-## 4 OBJECTIVES AND EXPECTED RESULTS
+User safety is a paramount concern in the design of A.R.M.S. The system incorporates intelligent braking and distance management to prevent collisions. If the rover detects that the user is too close or out of the camera's field of view, it automatically comes to a stop. This feature guarantees a safe operating distance between the rover and its user at all times.
 
-Our expected deliverable is a retrofitted RC car with somewhat limited cargo carrying capacity that is able to track a person with an orange vest. Additionally, the person will be able to utilize the hand signals that were detailed above.
+### Scalability and Future Improvements
 
-A successful project will satisfy the following metrics:
+The A.R.M.S. project lays a solid foundation for future enhancements, including the implementation of variable following distances and the integration of Multi-Object Tracking and Segmentation (MOTS). These potential upgrades promise to make A.R.M.S. even more versatile and suited to a wider range of applications, from educational settings to industrial and commercial environments.
 
-- Be able to recognize and track a person wearing an orange vest for 20 seconds.
-- Be able to recognize the 3 specific poses and act accordingly (as described above)
-- Carry at least one item
+## Getting Started
 
-A perfect project (if time permits) will also satisfy the following metrics:
+Instructions on how to setup and run A.R.M.S. will be provided here. This section will cover prerequisites, installation steps, and how to initiate the rover's autonomous following and pose detection functionalities.
 
-- Sound an alarm when the robot becomes too close to the tracked person
-- Be able to follow a person on a bicycle
+### Rover Setup
+For all rover hardware-related setup, please follow JetsonHack's fantastic [tutorial](https://youtube.com/playlist?list=PLXYLzZ3XzIbi3djynrdC1ofn-54WpIFbN&si=Gd9gv46p8KPnPF1Y).
 
-## 5 TIME SCHEDULE
+### Installing trt_pose
+These instructions are based on Nvidia's guide. For more information, please refer [here](https://github.com/NVIDIA-AI-IOT/trt_pose).
+#### Step 1 - Install Dependencies
+Install PyTorch and Torchvision. To do this on NVIDIA Jetson, we recommend following [this guide](https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048).
 
-The following is a tentative schedule for the project.
+Install [torch2trt](https://github.com/NVIDIA-AI-IOT/torch2trt)
+```bash
+   git clone https://github.com/NVIDIA-AI-IOT/torch2trt
+   cd torch2trt
+   sudo python3 setup.py install --plugins
+```
 
-| **Proposed Activity** | **Proposed Period** |
-| --- | --- |
-| Gather Data and Prepare Model Architecture | Jan 8 - Jan 12 |
-| Prepare RC Car and Hardware | Jan 12 - Feb 17 |
-| Train Model to Recognize Orange Shirt | Jan 13 - Jan 21 |
-| Add Body Position Reading Functionality | Jan 22 - Feb 9 |
-| Train Model to Recognize Signals | Feb 10 - Feb 17 |
-| Work Model Into RC Car | Feb 17 - Feb 29 |
-| Add Ultrasonic Distance Sensor For Accidents | If Time Permits |
-| Train Model to Work With Bicycle | If Time Permits |
+Install other miscellaneous packages
+```bash
+   sudo pip3 install tqdm cython pycocotools
+   sudo apt-get install python3-matplotlib
+```
+#### Step 2 - Install trt_pose
+```bash
+   git clone https://github.com/NVIDIA-AI-IOT/trt_pose
+   cd trt_pose
+   sudo python3 setup.py install
+```
 
-## REFERENCES
+### Install other needed packages
+```bash
+   pip3 install Adafruit-Blinka
+   pip3 install cv2
+```
 
-| [1] | Piaggio Fast Forward. "Gita Robots." Gita - Piaggio Fast Forward, piaggiofastforward.com/. Accessed 29 Nov. 2023. |
-| --- | --- |
-| [2] | Hosptial, Huntsville. "Back-to-School Burden: 79 Million Students in U.S. Carry Backpacks." Advance Local, 9 Aug. 2011, www.al.com/living/2011/08/back-to-school\_burden\_79\_milli.html. |
+## Usage
+
+Interacting with A.R.M.S. is designed to be intuitive, relying on specific body poses to control the rover's actions. Below are the instructions on how to start the rover, control it, and stop it using pose commands:
+
+### Starting the Rover
+
+To activate A.R.M.S. and begin the following mode:
+
+1. Stand with your body visible to the rover's camera.
+2. Extend both arms straight out to your sides, forming a 'T' shape with your body.
+3. Ensure your arms are parallel to the ground - this is recognized as the T-Pose.
+4. The rover will process your pose and start to follow you once it recognizes the T-Pose.
+
+### Controlling the Rover
+
+Once activated, A.R.M.S. will autonomously follow the user. Ensure you maintain a clear path for the rover to avoid any obstacles.
+
+### Stopping the Rover
+
+To stop the rover:
+
+1. Raise one arm to form a right angle, with your hand pointing upwards.
+2. Lower the other arm to form a right angle, with your hand pointing downwards.
+3. The rover will recognize the S-Pose and come to a stop.
+
+Remember that A.R.M.S. has been designed with user safety as a priority. If you need to halt the rover immediately for any reason, transition to the S-Pose. Make sure to perform the poses clearly so the rover's camera system can detect them accurately for optimal responsiveness. However, A.R.M.S. does have an auto-braking feature to avoid any collisions with the user. 
+
+
+
+
+## Acknowledgments
+
+We extend our gratitude to Professor Chuah for her invaluable guidance throughout this project. Special thanks to Kartik Patwari for technical support and the ECE Department of The University of California, Davis, for providing the necessary funding. Their collective support was instrumental in the realization of A.R.M.S.
+
+## Contributors
+
+- Omri Steinberg-Tatman
+- Jackson Vaughn
+- Brooke O'Flaherty
+- Luke Jones
+
+For any inquiries or contributions, please contact us through our email addresses.
+
+## References
+- Nvidia-Ai-IoT. “TRT POSE: Real-Time Pose Estimation Accelerated with Nvidia TENSORRT.” GitHub.
+- “Jetsonhacks - Overview.” GitHub.
+- “Real-Time Human Pose Estimation.” NVIDIA Developer.
+
+
+
