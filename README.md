@@ -45,6 +45,11 @@ Instructions on how to setup and run A.R.M.S. will be provided here. This sectio
 ### Rover Setup
 For all rover hardware-related setup, please follow JetsonHack's fantastic [tutorial](https://youtube.com/playlist?list=PLXYLzZ3XzIbi3djynrdC1ofn-54WpIFbN&si=Gd9gv46p8KPnPF1Y).
 
+### Download A.R.M.S
+```bash
+   git clone https://github.com/Just-Jacksone/ARMS.git ARMS
+```
+
 ### Installing trt_pose
 These instructions are based on Nvidia's guide. For more information, please refer [here](https://github.com/NVIDIA-AI-IOT/trt_pose).
 #### Step 1 - Install Dependencies
@@ -71,8 +76,7 @@ Install other miscellaneous packages
 
 ### Install other needed packages
 ```bash
-   pip3 install Adafruit-Blinka
-   pip3 install cv2
+   pip install requirements.txt
 ```
 
 ### Install resnet18 weights
@@ -84,6 +88,12 @@ Install other miscellaneous packages
 ## Usage
 
 Interacting with A.R.M.S. is designed to be intuitive, relying on specific body poses to control the rover's actions. Below are the instructions on how to start the rover, control it, and stop it using pose commands:
+
+### Running the software
+A.R.M.S. was designed with usability at its core, to run A.R.M.S. all the user must do is
+```bash
+   python ARMS/main.py
+```
 
 ### Starting the Rover
 
@@ -126,9 +136,9 @@ We extend our gratitude to Professor Chuah for her invaluable guidance throughou
 For any inquiries or contributions, please contact us through our email addresses.
 
 ## References
-- Nvidia-Ai-IoT. “TRT POSE: Real-Time Pose Estimation Accelerated with Nvidia TENSORRT.” GitHub.
-- “Jetsonhacks - Overview.” GitHub.
-- “Real-Time Human Pose Estimation.” NVIDIA Developer.
+- Nvidia-Ai-IoT. “TRT POSE: Real-Time Pose Estimation Accelerated with Nvidia TENSORRT.” GitHub. [https://github.com/NVIDIA-AI-IOT/trt_pose](https://github.com/NVIDIA-AI-IOT/trt_pose)
+- “Jetsonhacks - Overview.” GitHub. [https://github.com/jetsonhacks/jetsonRACECAR](https://github.com/jetsonhacks/jetsonRACECAR)
+- “Real-Time Human Pose Estimation.” NVIDIA Developer. [https://developer.nvidia.com/embedded/community/jetson-projects/nv_trt_pose](https://developer.nvidia.com/embedded/community/jetson-projects/nv_trt_pose)
 
 
 
